@@ -10,8 +10,6 @@ var symbolsArray = ['`','~','!','@','#','$','%','^','&','*','(',')','-','_','=',
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword(charAmount, withUppercase, withNumbers, withSymbols);
-  var passwordText = document.querySelector("#password");
   debugger;
   //prompt user to enter amount of characters
   var charAmount = window.prompt("How many characters do you want your password to have? Enter an amount between 8 and 128.");
@@ -40,7 +38,7 @@ function writePassword() {
   }
 
   //prompt user to include numbers
-  var withNumbers = window.prompt("Do you want ot include NUMBERS in your password? Enter YES or NO")
+  var withNumbers = window.prompt("Do you want to include NUMBERS in your password? Enter YES or NO")
   //make sure user enters valid entry
   if (withNumbers === '' || withNumbers === 'null') {
     alert("You need to enter YES or NO.");
@@ -56,7 +54,7 @@ function writePassword() {
   }
 
   //prompt user to include symbols
-  var withSymbols = window.prompt("Do you want ot include SYMBOLS in your password? Enter YES or NO")
+  var withSymbols = window.prompt("Do you want to include SYMBOLS in your password? Enter YES or NO")
   //make sure user enters valid entry
   if (withSymbols === '' || withSymbols === 'null') {
     alert("You need to enter YES or NO.");
@@ -70,13 +68,12 @@ function writePassword() {
   } else {
     withSymbols = false;
   }
-  console.log(withNumbers);
-  console.log(withSymbols);
-  console.log(withUppercase);
 
-  generatePassword(charAmount, withUppercase, withNumbers, withSymbols);
 
-  passwordText.value = password;
+  var password = generatePassword(charAmount, withUppercase, withNumbers, withSymbols);
+  var passwordText = document.querySelector("#password");
+
+  passwordText.innerText = password;
 }
 
 var generatePassword = function (charAmount, withUppercase, withNumbers, withSymbols) {
